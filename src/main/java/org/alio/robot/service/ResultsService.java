@@ -1,7 +1,7 @@
 package org.alio.robot.service;
 
 import lombok.extern.log4j.Log4j2;
-import org.alio.robot.model.ScenarioResult;
+import org.alio.robot.model.DTO.ScenarioResult;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -16,6 +16,7 @@ public class ResultsService {
         if (results.containsKey(jobId)) {
             return results.get(jobId);
         } else {
+            log.info("Couldn't find result {}", jobId);
             return null;
         }
     }

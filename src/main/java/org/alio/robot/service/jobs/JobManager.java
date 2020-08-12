@@ -1,10 +1,13 @@
 package org.alio.robot.service.jobs;
 
-import org.alio.robot.model.ScenarioRequest;
-import org.alio.robot.model.ScenarioResult;
+import org.alio.robot.model.DTO.JobResult;
+import org.alio.robot.model.DTO.ScenarioRequest;
+import org.alio.robot.model.DTO.ScenarioResult;
+
+import java.util.concurrent.ExecutionException;
 
 public interface JobManager {
-    String startJob(ScenarioRequest request);
+    JobResult startJob(ScenarioRequest request);
     Boolean isComplete(String jobId);
     ScenarioResult getResult(String jobId);
 }

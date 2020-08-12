@@ -1,6 +1,8 @@
-package org.alio.robot.model;
+package org.alio.robot.model.DTO;
 
 import lombok.Data;
+import org.alio.robot.model.simulation.MOVE;
+import org.alio.robot.model.simulation.Point;
 
 import java.util.List;
 
@@ -13,6 +15,7 @@ and a list of moves zombies will make
 @Data
 public class ScenarioRequest {
     private Integer dimension;
+    private Point startPoint;
     private List<Point> portalPoints;
     private List<MOVE> moves;
 }

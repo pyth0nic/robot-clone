@@ -1,0 +1,77 @@
+{
+	"info": {
+		"name": "Robots",
+		"_postman_id": "7a486d97-5f20-ed7b-5808-6ba5940473d2",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/api/scenario/start",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"dimension\": 4,\n\t\"startPoint\": {\n\t\t\"x\": 2,\n\t\t\"y\": 1\n\t},\n\t\"portalPoints\": [\n\t{\n\t\t\"x\": 0,\n\t\t\"y\": 1\n\t},\n\t{\n\t\t\"x\": 1,\n\t\t\"y\": 2\n\t},\n\t{\n\t\t\"x\": 3,\n\t\t\"y\": 1\n\t}\n\t],\n\t\"moves\": [\"D\",\"L\",\"U\",\"U\",\"R\",\"R\"]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/scenario/start",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"scenario",
+						"start"
+					]
+				},
+				"description": "Start"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/scenario/result/{{$jobId}}",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "b327d70b-0b97-49ba-9f41-cf6def88ea00",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/api/scenario/result/{{$jobId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"scenario",
+						"result",
+						"{{$jobId}}"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

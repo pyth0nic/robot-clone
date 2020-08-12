@@ -1,4 +1,4 @@
-package org.alio.robot.model;
+package org.alio.robot.model.simulation;
 
 public enum MOVE {
     D,

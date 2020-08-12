@@ -1,27 +1,30 @@
 package org.alio.robot.controller;
 
-import org.alio.robot.model.JobResult;
-import org.alio.robot.model.ScenarioRequest;
-import org.alio.robot.model.ScenarioResult;
-import org.alio.robot.service.ResultsService;
+import org.alio.robot.model.DTO.JobResult;
+import org.alio.robot.model.DTO.ScenarioRequest;
+import org.alio.robot.model.DTO.ScenarioResult;
+import org.alio.robot.service.jobs.JobManager;
 import org.springframework.web.bind.annotation.*;
 
-@RestController(value = "api/scenario")
+import java.time.Instant;
+
+@RestController
+@RequestMapping("api/scenario")
 public class ScenarioController {
 
-    private ResultsService resultsService;
+    private JobManager jobManager;
 
-    public ScenarioController(ResultsService resultsService) {
-        this.resultsService = resultsService;
+    public ScenarioController(JobManager jobManager) {
+        this.jobManager = jobManager;
     }
 
     @PostMapping("/start")
     public JobResult startScenario(@RequestBody ScenarioRequest scenarioRequest) {
-        return null;
+        return jobManager.startJob(scenarioRequest);
     }
 
     @GetMapping("/result/{jobId}")
-    public ScenarioResult startScenario(@PathVariable String jobId) {
-        return null;
+    public ScenarioResult getResult(@PathVariable String jobId) {
+        return jobManager.getResult(jobId);
     }
 }
