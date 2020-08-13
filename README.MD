@@ -6,10 +6,12 @@ portals are added to the map by users which when entered clone a robots moves an
 When there are no more portals and no more moves to make the program ends and the results can be queried.
 
 The map is a square grid of x and y coordinates, in the case of a 4x4 grid the following would be created in the simulation:
-0,3	1,3	2,3	3,3
-0,2 1,2 2,2	3,2
-0,1	1,1	2,1 3,1
-0,0	1,0	2,0	3,0  
+```
+0,0	0,1	0,2	0,3
+1,0	1,1	1,2	1,3
+2,0	2,1	2,2	2,3
+3,0	3,1	3,2	3,3
+```
 
 ## Core Technologies
 * SpringBoot
