@@ -4,6 +4,7 @@ import lombok.extern.log4j.Log4j2;
 import org.alio.robot.model.DTO.*;
 import org.alio.robot.model.simulation.Point;
 import org.alio.robot.service.SimulationTask;
+import org.alio.robot.service.simulation.RequestValidator;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
@@ -26,7 +27,7 @@ public class JobManagerImpl implements JobManager {
 
     @Override
     public JobResult startJob(ScenarioRequest request) {
-        List<String> errors = validateScenario(request);
+        List<String> errors = RequestValidator.validateScenario(request);
         if (errors.size() > 0) {
             return JobResultError
                     .builder()
@@ -43,28 +44,6 @@ public class JobManagerImpl implements JobManager {
                 .time(Instant.now())
                 .request(request)
                 .build();
-    }
-
-    private List<String> validateScenario(ScenarioRequest request) {
-        List<String> errors = new ArrayList<>();
-        if (request.getDimension() <= 0) {
-            errors.add("Dimension parameter is too small");
-        }
-        if (!Point.isValidPoint(request.getStartPoint(), request.getDimension())) {
-            errors.add("A portal point is not within valid bounds");
-        }
-        for (Point portal: request.getPortalPoints()) {
-            if (!Point.isValidPoint(portal, request.getDimension())) {
-                errors.add(
-                        String.format("A portal point is not within valid bounds (%d,%d)",
-                                       portal.getX(), portal.getY())
-                );
-            }
-        }
-        if (request.getMoves().size() == 0) {
-            errors.add("There must be at least one move.");
-        }
-        return errors;
     }
 
     @Override
